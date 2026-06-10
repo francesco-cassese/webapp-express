@@ -16,7 +16,7 @@ const connection = await createConnection({
 // Update:
 async function updateReview(request, response) {
     try {
-        const { id } = request.params; 
+        const { id } = request.params;
         const { name, title, review_content, rating } = request.body;
 
         const query = `
@@ -25,9 +25,9 @@ async function updateReview(request, response) {
             WHERE id = ?;
         `;
         const [result] = await connection.execute(query, [
-            name, 
-            title, 
-            review_content, 
+            name,
+            title,
+            review_content,
             rating,
             id
         ]);
