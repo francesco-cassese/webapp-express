@@ -8,7 +8,7 @@ const connection = await createConnection({
 });
 
 
-async function indexProducts(request, response) {
+async function indexProduct(request, response) {
     try {
 
         const { search, available, category } = request.query;
@@ -75,4 +75,27 @@ async function indexProducts(request, response) {
     };
 }
 
-export { indexProducts };
+//Show:
+async function showProduct(request, response) {
+    try {
+        const { id } = request.params;
+        const query = `SELECT * FROM products WHERE id=?;`
+
+        const [results] = await connection.execute(query, [id]);
+        if (results.length === 0) {
+            return response
+                .status(404)
+                .json({ message: "Product not Found." });
+        }
+        return response
+            .status(200)
+            .json({ results });
+    }
+    catch (error) {
+        console.error("Error requesting product:", error);
+        return response
+            .status(500).json({ error: "Internal Error." });
+    }
+}
+
+export { indexProduct , showProduct };
