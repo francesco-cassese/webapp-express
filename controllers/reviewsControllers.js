@@ -36,16 +36,26 @@ async function showReview(request, response) {
 
 async function createReview(request, response) {
     try {
-        const { name, title, review_content, rating } = request.body;
+        const { name, title, review_content, rating, product_id } = request.body;
 
-        const query = `INSERT INTO reviews (name, title, review_content, rating, created_at)
-                        VALUES (?, ?, ?, ?, NOW());`
+        const query = `
+    INSERT INTO reviews (
+        name,
+        title,
+        review_content,
+        date,
+        rating,
+        product_id
+    )
+    VALUES (?, ?, ?, NOW(), ?, ?)
+`;
 
         const [result] = await connection.execute(query, [
             name,
             title,
             review_content,
-            rating
+            rating,
+            product_id
         ]);
 
         return response.status(201).json({
@@ -60,6 +70,7 @@ async function createReview(request, response) {
         });
 
     } catch (error) {
+        console.error(error);
         return response.status(500).json({
             error: "Internal Error",
         });

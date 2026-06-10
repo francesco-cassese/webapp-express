@@ -5,6 +5,7 @@ function validateReview(request, response, next) {
     const title = toString(request.body.title);
     const review_content = toString(request.body.review_content);
     const rating = toNumber(request.body.rating);
+    const product_id = toNumber(request.body.product_id);
 
     if (!name) {
         return sendValidationError(response, "name", "Il nome è obbligatorio");
@@ -38,13 +39,17 @@ function validateReview(request, response, next) {
         return sendValidationError(response, "rating", "Il voto deve essere compreso tra 1 e 5");
     }
 
+    if (product_id == null || product_id < 1) {
+        return sendValidationError(response, "product_id", "Il prodotto non è valido");
+    }
+
     request.body = {
         name,
         title,
         review_content,
         rating,
+        product_id
     };
-
     next();
 }
 
