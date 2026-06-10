@@ -1,5 +1,6 @@
 import express from "express";
-import { updateReview, showReview } from "../controllers/reviewsControllers.js";
+import { updateReview, showReview, createReview } from "../controllers/reviewsControllers.js";
+import validateReview from "../middlewares/validateReviews.js";
 
 const reviewRouter = express.Router();
 
@@ -8,7 +9,7 @@ const reviewRouter = express.Router();
 // Show:
 reviewRouter.get("/:id", showReview);
 //Create:
-
+reviewRouter.post("/", [validateReview, createReview])
 //Update:
 reviewRouter.put("/:id", updateReview);
 

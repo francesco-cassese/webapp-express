@@ -34,6 +34,49 @@ async function showReview(request, response) {
 
 //Create:
 
+async function createReview(request, response) {
+    try {
+        const { name, title, review_content, rating, product_id } = request.body;
+
+        const query = `
+    INSERT INTO reviews (
+        name,
+        title,
+        review_content,
+        date,
+        rating,
+        product_id
+    )
+    VALUES (?, ?, ?, NOW(), ?, ?)
+`;
+
+        const [result] = await connection.execute(query, [
+            name,
+            title,
+            review_content,
+            rating,
+            product_id
+        ]);
+
+        return response.status(201).json({
+            message: "Recensione creata con successo",
+            data: {
+                id: result.insertId,
+                name,
+                title,
+                review_content,
+                rating
+            }
+        });
+
+    } catch (error) {
+        console.error(error);
+        return response.status(500).json({
+            error: "Internal Error",
+        });
+    }
+}
+
 // Update:
 async function updateReview(request, response) {
     try {
@@ -75,5 +118,6 @@ async function updateReview(request, response) {
 
 export {
     updateReview,
-    showReview
+    showReview,
+    createReview
 };
