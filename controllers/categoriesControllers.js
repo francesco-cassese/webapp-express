@@ -104,4 +104,27 @@ async function indexCategoriesProducts(request, response) {
     };
 }
 
-export {indexCategories, indexCategoriesProducts};
+//Show:
+async function showCategory(request, response) {
+    try {
+        const { id } = request.params;
+        const query = `SELECT * FROM categories WHERE id=?;`
+
+        const [results] = await connection.execute(query, [id]);
+        if (results.length === 0) {
+            return response
+                .status(404)
+                .json({ message: "Category not Found." });
+        }
+        return response
+            .status(200)
+            .json({ results });
+    }
+    catch (error) {
+        console.error("Error requesting category:", error);
+        return response
+            .status(500).json({ error: "Internal Error." });
+    }
+}
+
+export {indexCategories, indexCategoriesProducts, showCategory};
