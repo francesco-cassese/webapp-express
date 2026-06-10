@@ -16,6 +16,14 @@ app.use("/reviews", reviewRouter);
 
 app.use("/products", productRouter);
 
+app.use((request, response, next) => {
+
+    response.status(404).json({
+        error: "Resource not found",
+        message: "The requested endpoint does not exist on the server"
+    });
+});
+
 app.listen(PORT, (error) => {
     if (error) {
         return console.log('Il server ha riscontrato un errore', error);
