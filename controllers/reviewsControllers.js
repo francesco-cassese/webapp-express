@@ -10,8 +10,55 @@ const connection = await createConnection({
 //Index:
 
 //Show:
+async function showReview(request, response) {
+    try {
+        const { id } = request.params;
+        const query = `SELECT * FROM reviews WHERE id=?;`
+
+        const [results] = await connection.execute(query, [id]);
+        if (results.length === 0) {
+            return response
+                .status(404)
+                .json({ message: "Review not Found." });
+        }
+        return response
+            .status(200)
+            .json({ results });
+    }
+    catch (error) {
+        console.error("Error requesting review:", error);
+        return response
+            .status(500).json({ error: "Internal Error." });
+    }
+}
 
 //Create:
+
+async function createReview(request, response) {
+    try {
+        const { name, title, review_content, rating } = request.body;
+
+        const query = `INSERT INTO reviews (name, title, review_content, rating, created_at)
+                        VALUES (?, ?, ?, ?, NOW());`
+
+        const [results] = await connection.execute(query, [
+            name,
+            title,
+            review_content,
+            rating
+        ]);
+
+        return response.status(201).json({
+            messaggio: "Recensione creata con successo",
+            data: newReview,
+        });
+
+    } catch (error) {
+        return response.status(500).json({
+            errore: "Errore interno del server",
+        });
+    }
+}
 
 // Update:
 async function updateReview(request, response) {
@@ -53,5 +100,7 @@ async function updateReview(request, response) {
 //Delete:
 
 export {
-    updateReview
+    updateReview,
+    showReview,
+    createReview
 };
