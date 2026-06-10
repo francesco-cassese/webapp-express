@@ -10,13 +10,34 @@ const connection = await createConnection({
 //Index:
 
 //Show:
+async function showReview(request, response) {
+    try {
+        const { id } = request.params;
+        const query = `SELECT * FROM reviews WHERE id=?;`
+
+        const [results] = await connection.execute(query, [id]);
+        if (results.length === 0) {
+            return response
+                .status(404)
+                .json({ message: "Review not Found." });
+        }
+        return response
+            .status(200)
+            .json({ results });
+    }
+    catch (error) {
+        console.error("Error requesting review:", error);
+        return response
+            .status(500).json({ error: "Internal Error." });
+    }
+}
 
 //Create:
 
 // Update:
 async function updateReview(request, response) {
     try {
-        const { id } = request.params; 
+        const { id } = request.params;
         const { name, title, review_content, rating } = request.body;
 
         const query = `
@@ -25,9 +46,9 @@ async function updateReview(request, response) {
             WHERE id = ?;
         `;
         const [result] = await connection.execute(query, [
-            name, 
-            title, 
-            review_content, 
+            name,
+            title,
+            review_content,
             rating,
             id
         ]);
@@ -53,5 +74,6 @@ async function updateReview(request, response) {
 //Delete:
 
 export {
-    updateReview
+    updateReview,
+    showReview
 };
