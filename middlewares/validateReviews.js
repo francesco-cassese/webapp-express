@@ -1,9 +1,11 @@
 import { toString, toNumber, sendValidationError } from "../utility/utilitydb.js";
 
 function validateReview(request, response, next) {
-    const name = toString(request.body.name);
-    const title = toString(request.body.title);
-    const review_content = toString(request.body.review_content);
+
+    const name = toString(request.body.name).trim();
+    const title = toString(request.body.title).trim();
+    const review_content = toString(request.body.review_content).trim();
+
     const rating = toNumber(request.body.rating);
     const product_id = toNumber(request.body.product_id);
 
@@ -31,15 +33,15 @@ function validateReview(request, response, next) {
         return sendValidationError(response, "review_content", "La recensione non può superare 2000 caratteri");
     }
 
-    if (rating == null) {
-        return sendValidationError(response, "rating", "Il voto deve essere un numero");
+    if (isNaN(rating) || !Number.isInteger(rating)) {
+        return sendValidationError(response, "rating", "Il voto deve essere un numero intero");
     }
 
     if (rating < 1 || rating > 5) {
         return sendValidationError(response, "rating", "Il voto deve essere compreso tra 1 e 5");
     }
 
-    if (product_id == null || product_id < 1) {
+    if (isNaN(product_id) || product_id < 1) {
         return sendValidationError(response, "product_id", "Il prodotto non è valido");
     }
 
