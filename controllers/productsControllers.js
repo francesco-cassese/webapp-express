@@ -8,7 +8,7 @@ const connection = await createConnection({
 });
 
 
-async function index(request, response) {
+async function indexProducts(request, response) {
     try {
 
         const { search, available, category } = request.query;
@@ -75,4 +75,4 @@ async function index(request, response) {
     };
 }
 
-export { index };
+export { indexProducts };
