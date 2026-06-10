@@ -1,5 +1,6 @@
 import express from "express";
 import reviewRouter from "./routers/reviewRouter.js";
+import productRouter from "./routers/productRouter.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +13,8 @@ app.get('/', (req, res) => {
     })
 })
 app.use("/reviews", reviewRouter);
+
+app.use("/products", productRouter);
 
 app.listen(PORT, (error) => {
     if (error) {

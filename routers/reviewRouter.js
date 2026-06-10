@@ -1,12 +1,12 @@
 import express from "express";
-import { updateReview, showReview, createReview, deleteReview } from "../controllers/reviewsControllers.js";
+import { updateReview, showReview, createReview, deleteReview, indexReviews } from "../controllers/reviewsControllers.js";
 import validateReview from "../middlewares/validateReviews.js";
 
 
 const reviewRouter = express.Router();
 
 // Index:
-
+reviewRouter.get("/", indexReviews);
 // Show:
 reviewRouter.get("/:id", showReview);
 //Create:
