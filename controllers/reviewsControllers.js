@@ -1,5 +1,4 @@
 
-
 import { createConnection } from 'mysql2/promise';
 const connection = await createConnection({
     host: process.env.DB_HOSTNAME,
@@ -248,14 +247,9 @@ async function deleteReview(request, response) {
 export {
     updateReview,
     showReview,
-<<<<<<< HEAD
-    deleteReview
-
-};
-=======
+    deleteReview,
     createReview,
     indexReviews,
     IndexReviewsProduct
 };
 
->>>>>>> 202e0ba368e8a0238d91c6bcad902fc32da755b9
