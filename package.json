@@ -7,9 +7,14 @@
     "watch": "node --watch --env-file=.env index.js",
     "start": "node --env-file=.env index.js"
   },
-  "keywords": [ "Porchetta" ],
+  "keywords": [
+    "Porchetta"
+  ],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.33.2",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
