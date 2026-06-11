@@ -1,5 +1,4 @@
 
-
 import { createConnection } from 'mysql2/promise';
 const connection = await createConnection({
     host: process.env.DB_HOSTNAME,
@@ -115,7 +114,7 @@ async function IndexReviewsProduct(request, response) {
 }
 
 
-          
+
 //Show:
 async function showReview(request, response) {
     try {
@@ -150,11 +149,10 @@ async function createReview(request, response) {
         name,
         title,
         review_content,
-        date,
         rating,
         product_id
     )
-    VALUES (?, ?, ?, NOW(), ?, ?)
+    VALUES (?, ?, ?, ?, ?)
 `;
 
         const [result] = await connection.execute(query, [
@@ -172,12 +170,13 @@ async function createReview(request, response) {
                 name,
                 title,
                 review_content,
-                rating,
+                rating
+            }
         });
 
     } catch (error) {
         console.error(error)
-            return response.status(500).json({
+        return response.status(500).json({
             error: "Internal Error",
         });
     }
@@ -221,12 +220,35 @@ async function updateReview(request, response) {
 }
 
 //Delete:
+async function deleteReview(request, response) {
+    try {
+        const { id } = request.params;
+        const query = `DELETE FROM reviews WHERE id = ?;`;
+        const [result] = await connection.execute(query, [id]);
+        if (result.affectedRows === 0) {
+            return response
+                .status(404)
+                .json({ message: "Not Found." });
+        }
+        return response
+            .status(200)
+            .json({ message: "Review deleted successfully." });
+
+    }
+    catch (error) {
+        console.error("Error deleting review:", error);
+        return response
+            .status(500).json({ error: "Internal Error." });
+    }
+
+}
 
 export {
     updateReview,
     showReview,
+    deleteReview,
     createReview,
-    indexReviews, 
-    IndexReviewsProduct 
+    indexReviews,
+    IndexReviewsProduct
 };
 

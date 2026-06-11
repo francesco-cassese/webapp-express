@@ -21,7 +21,7 @@ async function indexProduct(request, response) {
                 p.price,
                 p.image,
                 p.place_of_origin,
-                p.if_available
+                p.is_available
             FROM products p
         `;
 
@@ -47,7 +47,7 @@ async function indexProduct(request, response) {
 
         // filtro disponibilità
         if (available !== undefined) {
-            sql += ` AND p.if_available = ? `;
+            sql += ` AND p.is_available = ? `;
             params.push(available === 'true');
         }
 
@@ -98,4 +98,4 @@ async function showProduct(request, response) {
     }
 }
 
-export { indexProduct , showProduct };
+export { indexProduct, showProduct };

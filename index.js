@@ -1,5 +1,7 @@
 import express from "express";
 import reviewRouter from "./routers/reviewRouter.js";
+import productRouter from "./routers/productRouter.js";
+import categoryRouter from "./routers/categoriesRouter.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +14,18 @@ app.get('/', (req, res) => {
     })
 })
 app.use("/reviews", reviewRouter);
+
+app.use("/products", productRouter);
+
+app.use("/categories", categoryRouter);
+
+app.use((request, response, next) => {
+
+    response.status(404).json({
+        error: "Resource not found",
+        message: "The requested endpoint does not exist on the server"
+    });
+});
 
 app.listen(PORT, (error) => {
     if (error) {
