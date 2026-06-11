@@ -1,12 +1,12 @@
 import express from 'express';
-import { indexCategories, indexCategoriesProducts } from '../controllers/categoriesControllers';
+import { indexCategories, indexCategoriesProducts } from '../controllers/categoriesControllers.js';
 
-const router = express.Router();
+const categoriesRouter = express.Router();
 
 //index
-router.get("/", indexCategories);
+categoriesRouter.get("/", indexCategories);
 
 //indexProducts
-router.get("/:id/products", indexCategoriesProducts);
+categoriesRouter.get("/:id/products", indexCategoriesProducts);
 
-export default router;
+export default categoriesRouter;
