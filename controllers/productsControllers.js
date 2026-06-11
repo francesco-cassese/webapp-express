@@ -49,7 +49,7 @@ async function indexProduct(request, response) {
             params.push(category);
         }
 
-        const [products] = await connection.query(sql, params);
+        const [products] = await connection.execute(sql, params);
 
         const baseUrl = `${request.protocol}://${request.get('host')}`;
 
