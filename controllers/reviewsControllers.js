@@ -35,7 +35,7 @@ async function indexReviews(request, response) {
         response.status(200).json({
             success: true,
             data: reviews
-           });
+        });
 
     } catch (error) {
         console.error(error);
