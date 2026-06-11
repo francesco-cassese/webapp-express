@@ -77,7 +77,7 @@ async function IndexReviewsProduct(request, response) {
                 rating
             FROM reviews
             WHERE product_id = ?
-            ORDER BY date DESC
+            ORDER BY date ASC
             `,
             [productId]
         );

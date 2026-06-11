@@ -3,7 +3,7 @@ import connection from "../config/database.js";
 async function indexProduct(request, response) {
     try {
 
-        const { search, available, category } = request.query;
+        const { search, available, category, limit, sortBy } = request.query;
 
         let sql = `
             SELECT DISTINCT
@@ -49,7 +49,19 @@ async function indexProduct(request, response) {
             params.push(category);
         }
 
-        const [products] = await connection.execute(sql, params);
+        if (sortBy === 'recent') {
+            sql += ` ORDER BY p.id DESC `;
+        }
+
+        if (limit) {
+            sql += ` LIMIT ? `;
+            params.push(Number(limit));
+        }
+
+        console.log("SQL Query:", sql);
+        console.log("Params:", params);
+
+        const [products] = await connection.query(sql, params);
 
         const baseUrl = `${request.protocol}://${request.get('host')}`;
 
