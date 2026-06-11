@@ -7,11 +7,18 @@ function toNumber(value) {
     return Number.isNaN(numberValue) ? null : numberValue;
 }
 
-function sendValidationError(response, campo, messaggio) {
+function sendValidationError(response, errors) {
+
+    const fields = [...new Set(errors.map(error => error.field))];
+
+    const prefix = fields.length === 1
+        ? "Il seguente campo non è valido o è mancante"
+        : "I seguenti campi non sono validi o sono mancanti";
+
     return response.status(400).json({
-        errore: "Errore di validazione",
-        messaggio,
-        campo,
+        error: "Errore di validazione",
+        message: `${prefix}: ${fields.join(", ")}`,
+        details: errors
     });
 }
 
