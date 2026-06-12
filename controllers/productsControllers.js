@@ -71,6 +71,7 @@ async function indexProduct(request, response) {
 
             return {
                 ...productData,
+                price: parseFloat(product.price),
                 image: `${baseUrl}/images/${imageFileName}`
             };
         });
@@ -126,8 +127,8 @@ async function showProduct(request, response) {
         product.reviewsCount = Number(product.reviews_count) || 0;
 
         product.averageRating = product.average_rating
-            ? parseFloat(product.average_rating).toFixed(1)
-            : "0.0";
+            ? parseFloat(parseFloat(product.average_rating).toFixed(1))
+            : 0.0;
 
         delete product.reviews_count;
         delete product.average_rating;
