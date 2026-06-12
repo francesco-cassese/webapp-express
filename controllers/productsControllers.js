@@ -139,6 +139,7 @@ async function showProduct(request, response) {
         const reviewsQuery = `
             SELECT 
                 id,
+                title,
                 name,
                 review_content,
                 rating,
