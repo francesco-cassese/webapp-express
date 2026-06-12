@@ -140,7 +140,9 @@ async function showProduct(request, response) {
                 rating,
                 date
             FROM reviews 
-            WHERE product_id = ?;
+            WHERE product_id = ?
+            ORDER BY date DESC
+            LIMIT 4;
         `;
 
         const [reviews] = await connection.execute(reviewsQuery, [productId])
