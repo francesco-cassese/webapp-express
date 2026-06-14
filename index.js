@@ -2,12 +2,13 @@ import express from "express";
 import reviewRouter from "./routers/reviewRouter.js";
 import productRouter from "./routers/productRouter.js";
 import categoryRouter from "./routers/categoriesRouter.js";
+import anthropicRoutes from './routers/anthropicRoutes.js';
 import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(cors({
-  origin: 'http://localhost:5173' 
+    origin: 'http://localhost:5173'
 }));
 
 app.use(express.json());
@@ -22,6 +23,8 @@ app.use("/reviews", reviewRouter);
 app.use("/products", productRouter);
 
 app.use("/categories", categoryRouter);
+
+app.use('/ai', anthropicRoutes);
 
 app.use((request, response, next) => {
 
