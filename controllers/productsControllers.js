@@ -14,8 +14,11 @@ async function indexProduct(request, response) {
                 p.image,
                 p.place_of_origin,
                 p.is_available,
-                p.created_at
+                p.created_at,
+                AVG(r.rating) AS average_rating
             FROM products p
+            LEFT JOIN reviews r 
+                ON p.id = r.product_id
         `;
 
         const params = [];
@@ -50,8 +53,18 @@ async function indexProduct(request, response) {
             params.push(category);
         }
 
+        sql += ` 
+            GROUP BY 
+                p.id, p.name, p.description, p.price, p.image, 
+                p.place_of_origin, p.is_available, p.created_at 
+        `;
+
         if (sortBy === 'recent') {
             sql += ` ORDER BY p.created_at DESC `;
+        }
+
+        if (sortBy === 'rating') {
+            sql += ` ORDER BY average_rating DESC `;
         }
 
         if (limit) {
