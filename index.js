@@ -12,6 +12,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use('/assets', express.static('public/assets'))
 
 app.get('/', (req, res) => {
     res.json({
