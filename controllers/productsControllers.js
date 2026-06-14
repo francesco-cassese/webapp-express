@@ -149,11 +149,7 @@ async function showProduct(request, response) {
         delete product.reviews_count;
         delete product.average_rating;
 
-        const baseUrl = `${request.protocol}://${request.get('host')}`;
-
-        const imageFileName = product.image ? product.image : "placeholder.png";
-
-        product.image = `${baseUrl}/images/${imageFileName}`;
+        product.image = product.image ? product.image : "placeholder.png";
 
         const reviewsQuery = `
             SELECT 
