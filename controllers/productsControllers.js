@@ -146,7 +146,7 @@ async function showProduct(request, response) {
                 date
             FROM reviews 
             WHERE product_id = ?
-            ORDER BY date DESC
+            ORDER BY rating DESC
             LIMIT 4;
         `;
 
