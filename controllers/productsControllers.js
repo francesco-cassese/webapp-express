@@ -85,7 +85,7 @@ async function indexProduct(request, response) {
             return {
                 ...productData,
                 price: parseFloat(product.price),
-                image: `${baseUrl}/imgs/${imageFileName}`
+                image: `${baseUrl}/images/${imageFileName}`
             };
         });
 
@@ -153,7 +153,7 @@ async function showProduct(request, response) {
 
         const imageFileName = product.image ? product.image : "placeholder.png";
 
-        product.image = `${baseUrl}/imgs/${imageFileName}`;
+        product.image = `${baseUrl}/images/${imageFileName}`;
 
         const reviewsQuery = `
             SELECT 
