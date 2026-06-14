@@ -16,9 +16,12 @@
   "type": "module",
   "dependencies": {
     "@langchain/anthropic": "^1.4.1",
+    "add": "^2.0.6",
     "cors": "^2.8.6",
+    "e": "^0.2.33",
     "express": "^5.2.1",
     "langchain": "^1.4.5",
-    "mysql2": "^3.22.5"
+    "mysql2": "^3.22.5",
+    "pnpm": "^11.6.0"
   }
 }
