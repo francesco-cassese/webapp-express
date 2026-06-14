@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS `reviews`;
 DROP TABLE IF EXISTS `products`;
 DROP TABLE IF EXISTS `categories`;
 
--- 1. CREATION TABELLE
+-- 1. CREAZIONE TABELLE
 CREATE TABLE `products`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(100) NOT NULL,
@@ -103,7 +103,7 @@ INSERT INTO `product_category` (`product_id`, `category_id`) VALUES
 (17, 12), (18, 9), (19, 11), (20, 7), (21, 10), (22, 5), (23, 1), (24, 8),
 (25, 5), (26, 9), (27, 10), (28, 11);
 
--- 5. INSERIMENTO RECENSIONI DIVERTENTI (Iniziali + Nuove, ID 8 escluso)
+-- 5. INSERIMENTO RECENSIONI (Iniziali + Blocco 2 + Ulteriori recensioni, ID 8 escluso)
 INSERT INTO `reviews` (`id`, `name`, `title`, `review_content`, `date`, `rating`, `product_id`) VALUES
 (1, 'User_Aerodinamico', 'Volo perfetto!', 'Mi è volata dritta in bocca con un angolo di 45 gradi. Coefficiente di penetrazione del sugo eccezionale!', '2026-06-01 20:00:00', 5, 1),
 (2, 'Marie_Curie99', 'Esperienza radiosa', 'Ottima, ma adesso brillo al buio. Mio marito dice che risparmiamo sulla bolletta della luce.', '2026-06-02 21:15:00', 4, 2),
@@ -151,4 +151,34 @@ INSERT INTO `reviews` (`id`, `name`, `title`, `review_content`, `date`, `rating`
 (45, 'Git_Expert', 'Sovrascrittura riuscita', 'Ha fatto il commit direttamente nel mio intestino. Ha ignorato ogni conflitto della mia gastrite.', '2026-06-11 23:30:00', 5, 22),
 (46, 'Paleo_Diet', 'Cottura paleolitica', 'Crosta troppo dura per i miei molari evoluti. Sa di caverna ma è un po rustica.', '2026-06-12 09:00:00', 3, 17),
 (47, 'Open_Source_Dev', 'Fork eccellente', 'Ho clonato il panino, ho aggiunto un pizzico di sale e ho fatto il pull request al mio stomaco.', '2026-06-12 10:15:00', 5, 25),
-(48, 'Chimico_Bombarolo', 'Reazione esotermica', 'Ha generato una combustione incontrollata nel tratto digerente. Sconsigliato agli organismi biologici.', '2026-06-12 11:00:00', 1, 10);
+(48, 'Chimico_Bombarolo', 'Reazione esotermica', 'Ha generato una combustione incontrollata nel tratto digerente. Sconsigliato agli organismi biologici.', '2026-06-12 11:00:00', 1, 10),
+(49, 'Astrophysicist_85', 'Massa critica superata', 'La densità di gusto di questo piatto ha causato il collasso del mio apparato digerente. Eccellente.', '2026-06-13 12:00:00', 5, 4),
+(50, 'Cosmo_Nauta', 'Buchi neri nel menu', 'Un esperienza culinaria cosmica, la crosta è densa come una nana bianca.', '2026-06-13 13:30:00', 4, 4),
+(51, 'Galileo_Pork', 'Eppur si mastica', 'Osservando la struttura molecolare di questo pezzo, non posso che confermare la sua bontà.', '2026-06-13 14:15:00', 5, 4),
+(52, 'Prof_Oak', 'Il Big Pork ancestrale', 'Un pezzo di storia della cucina. Consiglio di accompagnarlo con un vino a pH controllato.', '2026-06-13 15:00:00', 4, 4),
+(53, 'Web_Dev_Master', 'Implementazione perfetta', 'Create, Read, Update e Delete eseguiti in un sol boccone. Ottima transazione.', '2026-06-13 15:45:00', 5, 12),
+(54, 'Frontend_Sucks', 'Nessun errore 500', 'Interfaccia croccante, backend succoso. Nessun rallentamento nel parsing.', '2026-06-13 16:30:00', 4, 12),
+(55, 'Backend_Cod', 'CRUD completato', 'Ho effettuato il fetch di questo piatto ed è stato subito inserito nella cache del mio stomaco.', '2026-06-13 17:00:00', 5, 12),
+(56, 'FullStack_99', 'Database normalizzato', 'La quantità di pepe è perfettamente normalizzata rispetto alla quantità di grasso.', '2026-06-13 17:30:00', 4, 12),
+(57, 'Debug_Man', 'Crash digestivo', 'Troppo pesante, ho dovuto terminare il processo (kill) con una lunga camminata.', '2026-06-13 18:00:00', 2, 16),
+(58, 'Exception_Handler', 'Memoria insufficiente', 'Ho tentato di allocare troppa carne nel mio stack gastrico. Eccezione non gestita.', '2026-06-13 18:30:00', 1, 16),
+(59, 'Code_Reviewer', 'Stack trace illeggibile', 'Il sapore è così complesso che sembra un log di errore dopo un crash di sistema.', '2026-06-13 19:00:00', 3, 16),
+(60, 'Memory_Leak', 'Perdita di memoria', 'Ho mangiato così tanto che non ricordo più come mi chiamo. Ottima porchetta, ma devastante.', '2026-06-13 19:30:00', 4, 16),
+(61, 'Compiler_Error', 'Errore di compilazione', 'Il grasso non è riuscito a collegarsi al magro. Digestione fallita a tempo di compilazione.', '2026-06-13 20:00:00', 1, 16),
+(62, 'Archimede_2', 'Area del cerchio perfetta', 'Il rapporto tra la crosta e il sugo è esattamente 3.14. Irrazionalmente buona.', '2026-06-13 20:30:00', 5, 28),
+(63, 'Geometra_Pazzo', 'Spigoli arrotondati', 'Nonostante il nome, la geometria di questo panino è incredibilmente armonica al palato.', '2026-06-13 21:00:00', 4, 28),
+(64, 'Matematico_Triste', 'Serie infinita', 'Continuo a mangiarla e non converge mai verso la fine. Una gioia per l infinto.', '2026-06-13 21:30:00', 5, 28),
+(65, 'Fibonacci_Nerd', 'Sezione aurea del sugo', 'Masticazione che segue perfettamente la spirale logaritmica.', '2026-06-13 22:00:00', 4, 28),
+(66, 'Aerodinamica_2', 'Volo planato', 'Il cameriere ha lanciato il piatto, ma stavolta c era troppo vento. Peccato.', '2026-06-13 22:30:00', 2, 1),
+(67, 'Chernobyl_2', 'Radioattività eccessiva', 'Il contatore Geiger è impazzito sul tavolo. Sapore forte, ma rischio di avvelenamento.', '2026-06-13 23:00:00', 2, 2),
+(68, 'Quantum_Hater', 'Stato confuso', 'Non ho capito se era maiale o pollo. La fisica quantistica non si applica ai panini.', '2026-06-14 09:00:00', 2, 13),
+(69, 'Localhost_User', 'Connessione rifiutata', 'Un semplice Hello World, ma il pane era un po raffermo sul server locale.', '2026-06-14 10:00:00', 3, 9),
+(70, 'Bot_Test', 'Integrazione superba', 'Il piatto si integra perfettamente con il mio framework interno.', '2026-06-14 11:00:00', 4, 9),
+(71, 'Cyber_99', 'Innesti cibernetici', 'Il rosmarino al neon dona un retrogusto metallico molto interessante.', '2026-06-14 12:00:00', 5, 15),
+(72, 'Paleo_2', 'Fuoco e fiamme', 'Crosta croccante come un osso preistorico. Mi ha salvato dalla carestia.', '2026-06-14 13:00:00', 4, 17),
+(73, 'Atomo_Man', 'Fissione gustativa', 'Una reazione nucleare controllata direttamente nel cavo orale.', '2026-06-14 14:00:00', 5, 2),
+(74, 'String_2', 'Undicesima dimensione', 'Il finocchietto vibra in armonia con le stringhe cosmiche.', '2026-06-14 15:00:00', 4, 14),
+(75, 'Dark_Nerd', 'Massa oscura notevole', 'Non si vede cosa c è dentro la piadina ma riempie come se fossero 3 cene.', '2026-06-14 16:00:00', 4, 21),
+(76, 'Senza_Git', 'Push riuscito', 'Anche senza --force, questo panino è entrato subito in produzione.', '2026-06-14 17:00:00', 5, 22),
+(77, 'Ph_Control', 'Isotonico ma salato', 'Un po troppo sodio per i miei elettroliti, ma nel complesso bilanciato.', '2026-06-14 18:00:00', 3, 23),
+(78, 'Antimatter_2', 'Annichilimento evitato', 'Ho evitato che toccasse il panino normale, per fortuna. Ottimo sapore.', '2026-06-14 19:00:00', 5, 24);
