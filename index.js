@@ -14,11 +14,6 @@ app.use(cors({
 app.use(express.json());
 app.use('/assets', express.static('public/assets'))
 
-app.get('/', (req, res) => {
-    res.json({
-        "message": "Benvenuti"
-    })
-})
 app.use("/reviews", reviewRouter);
 
 app.use("/products", productRouter);
