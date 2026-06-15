@@ -159,16 +159,19 @@ async function createReview(request, response) {
             product_id
         ]);
 
+        const [newReviewRows] = await connection.execute(
+            `SELECT id, 
+            name, title, 
+            review_content, 
+            date, rating, 
+            product_id FROM reviews WHERE id = ?`,
+            [result.insertId]
+        );
+
         return response.status(201).json({
             success: true,
             message: "Recensione creata con successo",
-            data: {
-                id: result.insertId,
-                name,
-                title,
-                review_content,
-                rating
-            }
+            data: newReviewRows[0]
         });
 
     } catch (error) {
