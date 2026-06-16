@@ -16,7 +16,11 @@ const getReviewsTool = tool(
 
         if (rows.length === 0) return "Nessuna recensione trovata per questo prodotto.";
 
-        return JSON.stringify(rows);
+        const formatted = rows.map(row =>
+            `⭐ ${row.rating}/5 - ${row.review_content}`
+        ).join("\n\n");
+
+        return `Recensioni trovate:\n\n${formatted}`;
     },
     {
         name: "get_reviews",
