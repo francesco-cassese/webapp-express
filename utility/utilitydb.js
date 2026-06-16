@@ -22,4 +22,9 @@ function sendValidationError(response, errors) {
     });
 }
 
-export { toString, toNumber, sendValidationError }
+const cleanSearchTerm = (term) => {
+    if (!term) return "";
+    return term.toLowerCase().replace(/[^a-z0-9 ]/g, "").trim();
+};
+
+export { toString, toNumber, sendValidationError, cleanSearchTerm }

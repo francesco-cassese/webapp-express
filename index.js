@@ -2,7 +2,7 @@ import express from "express";
 import reviewRouter from "./routers/reviewRouter.js";
 import productRouter from "./routers/productRouter.js";
 import categoryRouter from "./routers/categoriesRouter.js";
-import anthropicRoutes from './routers/anthropicRoutes.js';
+import anthropicRoutes from './routers/anthropicRouter.js';
 import cors from "cors";
 
 const app = express();
