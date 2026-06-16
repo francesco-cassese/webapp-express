@@ -10,9 +10,9 @@ const searchProductsTool = tool(
             return "Non ho trovato prodotti simili. Prova a cercare un altro termine.";
         }
 
-        const listaProdotti = rows.map(p => `- ${p.name} (${p.price}€)`).join("\n");
+        const productList = rows.map(product => `- ${product.name} (${product.price}€)`).join("\n");
 
-        return `Ho trovato questi prodotti simili:\n${listaProdotti}\n\nPer favore, dimmi quale di questi preferisci per continuare.`;
+        return `Ho trovato questi prodotti simili:\n${productList}\n\nPer favore, dimmi quale di questi preferisci per continuare.`;
     },
     {
         name: "search_products",
