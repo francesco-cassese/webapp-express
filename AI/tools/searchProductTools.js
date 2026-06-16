@@ -1,24 +1,34 @@
 import { tool } from "langchain";
-import z from "zod";
+import { z } from "zod";
+import connection from "../../config/database.js";
 
 const searchProductsTool = tool(
     async ({ query }) => {
-        const sql = `SELECT name, price FROM products WHERE name LIKE ?`;
+        const sql = `
+            SELECT id, name, price
+            FROM products 
+            WHERE LOWER(name) LIKE LOWER(?)
+            LIMIT 5
+        `;
+
         const [rows] = await connection.execute(sql, [`%${query}%`]);
 
         if (rows.length === 0) {
             return "Non ho trovato prodotti simili. Prova a cercare un altro termine.";
         }
 
-        const productList = rows.map(product => `- ${product.name} (${product.price}€)`).join("\n");
+        const productList = rows
+            .map(product => `- ${product.name} (${product.price}€)`)
+            .join("\n");
 
-        return `Ho trovato questi prodotti simili:\n${productList}\n\nPer favore, dimmi quale di questi preferisci per continuare.`;
+        return `Ho trovato questi prodotti simili:\n${productList}\n\n👉 Quale intendi?`;
     },
     {
         name: "search_products",
-        description: "Usa questo tool per cercare prodotti nel catalogo. Se trovi più di un prodotto, elenca i nomi e chiedi all'utente di sceglierne uno.",
+
+        description: "Obbligatorio per cercare panini nel database. USALO SEMPRE PRIMA di fornire qualsiasi informazione su un prodotto, specialmente se il nome è ambiguo o generico.",
         schema: z.object({
-            query: z.string().describe("Il termine di ricerca (es. 'porchetta' o 'nucleare')")
+            query: z.string().describe("Il nome o parte del nome del panino cercato")
         }),
     }
 );
