@@ -11,15 +11,9 @@ importers:
       '@langchain/anthropic':
         specifier: ^1.4.1
         version: 1.4.1(@langchain/core@1.1.49)
-      add:
-        specifier: ^2.0.6
-        version: 2.0.6
       cors:
         specifier: ^2.8.6
         version: 2.8.6
-      e:
-        specifier: ^0.2.33
-        version: 0.2.33
       express:
         specifier: ^5.2.1
         version: 5.2.1
@@ -29,9 +23,9 @@ importers:
       mysql2:
         specifier: ^3.22.5
         version: 3.22.5(@types/node@25.9.2)
-      pnpm:
-        specifier: ^11.6.0
-        version: 11.6.0
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
 
 packages:
 
@@ -115,9 +109,6 @@ packages:
     resolution: {integrity: sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng==}
     engines: {node: '>= 0.6'}
 
-  add@2.0.6:
-    resolution: {integrity: sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==}
-
   aws-ssl-profiles@1.1.2:
     resolution: {integrity: sha512-NZKeq9AfyQvEeNlN0zSYAaWrmBffJh3IELMZfRpJVWgrpEbtEpnjvzqBPf+mxoI287JohRDoa+/nsfqqiZmF6g==}
     engines: {node: '>= 6.0.0'}
@@ -185,10 +176,6 @@ packages:
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
-
-  e@0.2.33:
-    resolution: {integrity: sha512-anpW+L+S+xxSOg0/IdVDwcjxS6b63Cbg0EPhiUbvfr2xSQ9IB0BK+QOjj1ndn5RfnhOyM20AwTOt26xyw/BCLA==}
-    engines: {node: '>=12', npm: '>=6'}
 
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -419,11 +406,6 @@ packages:
   path-to-regexp@8.4.2:
     resolution: {integrity: sha512-qRcuIdP69NPm4qbACK+aDogI5CBDMi1jKe0ry5rSQJz8JVLsC7jV8XpiJjGRLLol3N+R5ihGYcrPLTno6pAdBA==}
 
-  pnpm@11.6.0:
-    resolution: {integrity: sha512-mjZRgiQIDG/lFlr9z+eb+hGMKb5wPz9GKx4y7+HpjkfodQsUjggoYlCq1BE8x5k8pBPE4s1Ed1JwjC7ldRvJXw==}
-    engines: {node: '>=22.13'}
-    hasBin: true
-
   proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
@@ -591,8 +573,6 @@ snapshots:
       mime-types: 3.0.2
       negotiator: 1.0.0
 
-  add@2.0.6: {}
-
   aws-ssl-profiles@1.1.2: {}
 
   base64-js@1.5.1: {}
@@ -651,8 +631,6 @@ snapshots:
       call-bind-apply-helpers: 1.0.2
       es-errors: 1.3.0
       gopd: 1.2.0
-
-  e@0.2.33: {}
 
   ee-first@1.1.1: {}
 
@@ -885,8 +863,6 @@ snapshots:
   parseurl@1.3.3: {}
 
   path-to-regexp@8.4.2: {}
-
-  pnpm@11.6.0: {}
 
   proxy-addr@2.0.7:
     dependencies:

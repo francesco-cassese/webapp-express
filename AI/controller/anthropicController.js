@@ -1,6 +1,6 @@
 // controllers/anthropicController.js
 import { messaggiaClaude } from '../services/anthropicService.js';
-import connection from '../config/database.js';
+import connection from '../../config/database.js';
 
 export const gestisciChat = async (request, response) => {
     try {

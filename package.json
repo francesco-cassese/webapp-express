@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "node --watch --env-file=.env index.js",
-    "start": "node --env-file=.env index.js"
+    "start": "node --env-file=.env index.js",
+    "agent-call": "node --watch --env-file=.env /ai/agents/genericAgent.js"
   },
   "keywords": [
     "Porchetta"
@@ -19,6 +20,7 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "langchain": "^1.4.5",
-    "mysql2": "^3.22.5"
+    "mysql2": "^3.22.5",
+    "zod": "^4.4.3"
   }
 }

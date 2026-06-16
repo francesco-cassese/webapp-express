@@ -13,4 +13,4 @@ const messaggiaClaude = (messaggio, systemPrompt) => {
     ])
 }
 
-export { messaggiaClaude }
+export { messaggiaClaude, model }
