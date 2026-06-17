@@ -5,27 +5,23 @@ import connection from "../../config/database.js";
 const goToProductTool = tool(
     async ({ productName }) => {
 
-        const staticPages = {
-            "menu": "/products",
-            "chi siamo": "/aboutus",
-            "I Top seller": "/reviews",
-            "Pagina iniziale": "/",
-            "homepage": "/",
-            "home": "/"
-        };
+        const input = productName.toLowerCase().trim();
 
-        const key = productName.toLowerCase().trim();
-
-        if (staticPages[key]) {
-            return JSON.stringify({
-                action: "REDIRECT",
-                url: staticPages[key],
-                message: "Certamente, ti ci porto subito!"
-            });
+        if (input.includes("menu")) {
+            return JSON.stringify({ action: "REDIRECT", url: "/products", message: "Certamente, ti porto al menù!" });
+        }
+        if (input.includes("chi siamo") || input.includes("storia")) {
+            return JSON.stringify({ action: "REDIRECT", url: "/aboutus", message: "Ti porto alla pagina Chi Siamo." });
+        }
+        if (input.includes("top seller") || input.includes("recensioni")) {
+            return JSON.stringify({ action: "REDIRECT", url: "/reviews", message: "Ecco i nostri Top Seller!" });
+        }
+        if (input.includes("home") || input.includes("iniziale") || input === "home") {
+            return JSON.stringify({ action: "REDIRECT", url: "/", message: "Torniamo alla home!" });
         }
 
         const [rows] = await connection.execute(
-            `SELECT id FROM products WHERE LOWER(name) LIKE LOWER(?) LIMIT 1`,
+            `SELECT id, name FROM products WHERE LOWER(name) LIKE LOWER(?) LIMIT 1`,
             [`%${productName}%`]
         );
 
