@@ -1,3 +1,5 @@
+import { HumanMessage } from "langchain";
+
 function toString(value) {
     return typeof value === "string" ? value.trim() : "";
 }
@@ -27,4 +29,16 @@ const cleanSearchTerm = (term) => {
     return term.toLowerCase().replace(/[^a-z0-9 ]/g, "").trim();
 };
 
-export { toString, toNumber, sendValidationError, cleanSearchTerm }
+const sendTextResponse = async (res, agent, message) => {
+
+    const response = await agent.invoke({
+        messages: [new HumanMessage(message)]
+    });
+
+    return res.status(200).json({
+        success: true,
+        data: response.messages.at(-1).content
+    });
+};
+
+export { toString, toNumber, sendValidationError, cleanSearchTerm, sendTextResponse }
