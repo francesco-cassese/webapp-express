@@ -23,6 +23,10 @@ Il progetto espone un'API REST costruita con Express per servire il catalogo pro
 - Un'istanza MySQL raggiungibile (locale o remota)
 - Una API key Anthropic (Claude) per abilitare le funzionalità AI
 
+## Frontend
+Questa API è progettata per servire il client web. Puoi trovare il repository del frontend qui:
+[PorcheDotto Frontend](https://github.com/francesco-cassese/webapp-react)
+
 ## Installazione
 
 Clona il repository e installa le dipendenze con pnpm:
