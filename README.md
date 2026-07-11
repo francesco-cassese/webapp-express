@@ -8,13 +8,13 @@ Il progetto espone un'API REST costruita con Express per servire il catalogo pro
 
 ## Stack Tecnologico
 
-- **Runtime**: Node.js (ESM)
-- **Framework HTTP**: Express 5
-- **Database**: MySQL (driver `mysql2`)
-- **AI / Agenti**: LangChain, `@langchain/anthropic` (Claude)
-- **Validazione**: Zod
-- **Altro**: CORS
-- **Package manager**: pnpm
+- **Runtime**: [Node.js](https://nodejs.org/) (ESM)
+- **Framework HTTP**: [Express 5](https://expressjs.com/)
+- **Database**: [MySQL](https://www.mysql.com/) (driver `mysql2`)
+- **AI / Agenti**: [LangChain](https://www.langchain.com/), [Anthropic Claude](https://www.anthropic.com/claude)
+- **Validazione**: [Zod](https://zod.dev/)
+- **Altro**: [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+- **Package manager**: [pnpm](https://pnpm.io/)
 
 ## Prerequisiti
 
@@ -100,12 +100,12 @@ Gli asset statici delle immagini prodotto sono serviti da `/assets`.
 
 Progetto sviluppato dal **Gruppo 4**:
 
-- Francesco Cassese
-- Francesco E. Floris
-- Alessia Di Ruggiero
-- Giulia Buonasperanza
-- Ivan V. Caldarella
+- [Francesco Cassese](https://github.com/francesco-cassese)
+- [Francesco E. Floris](https://github.com/francescoEFloris)
+- [Alessia Di Ruggiero](https://github.com/rAel-Ael)
+- [Giulia Buonasperanza](https://github.com/giulia-buonasperanza)
+- [Ivan V. Caldarella](https://github.com/gamein3x)
 
 ## Licenza
 
-Distribuito con licenza **ISC** (vedi `package.json`).
+Progetto didattico a uso privato, sviluppato nell'ambito di un project work Boolean.
