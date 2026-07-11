@@ -27,17 +27,17 @@ Il progetto espone un'API REST costruita con Express per servire il catalogo pro
 
 Clona il repository e installa le dipendenze con pnpm:
 
-\`\`\`bash
+```bash
 pnpm install
-\`\`\`
+```
 
 ### Configurazione
 
 Copia il file di esempio delle variabili d'ambiente e valorizzalo:
 
-\`\`\`bash
+```bash
 cp .env.example .env
-\`\`\`
+```
 
 | Variabile        | Descrizione                          |
 | ---------------- | ------------------------------------- |
@@ -55,15 +55,15 @@ Le migrazioni SQL e un dump di dati di esempio sono disponibili in `db/migration
 
 Avvio in modalità sviluppo (restart automatico sui cambi file):
 
-\`\`\`bash
+```bash
 pnpm watch
-\`\`\`
+```
 
 Avvio in modalità standard:
 
-\`\`\`bash
+```bash
 pnpm start
-\`\`\`
+```
 
 Il server espone le seguenti risorse principali:
 
@@ -85,7 +85,7 @@ Gli asset statici delle immagini prodotto sono serviti da `/assets`.
 
 ## Struttura del progetto
 
-\`\`\`
+```
 ├── AI/                # Agenti, tool e modelli LangChain/Claude
 ├── config/            # Connessione al database
 ├── controllers/       # Logica delle route
@@ -94,7 +94,7 @@ Gli asset statici delle immagini prodotto sono serviti da `/assets`.
 ├── public/assets/       # Immagini prodotto
 ├── routers/            # Definizione delle route Express
 └── index.js            # Entry point dell'applicazione
-\`\`\`
+```
 
 ## Contributi
 
